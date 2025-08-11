@@ -33,22 +33,36 @@ onMounted(() => {
 
 <template>
   <q-layout view="lHh LpR lFf">
-    <q-header>
-      <q-toolbar class="bg-grey-1 text-black toolbar-scrolled">
-        <slot name="left-button"></slot>
-        <q-toolbar-title
-          :class="{ 'q-ml-sm': leftDrawerOpen }"
-          style="font-size: 18px"
+    <q-header bordered class="bg-grey-1 text-dark q-py-sm q-px-xl">
+      <q-toolbar class="q-pa-none">
+        <div class="flex items-center q-gutter-x-md">
+          <q-avatar color="grey-3" size="60px"><img src="../assets/img/favicon.png" alt=""> </q-avatar>
+          <q-toolbar-title
+          :class="{ 'q-ml-sm': leftDrawerOpen}"
+          class="text-h6 text-weight-bold">
+        <slot name="title">{{ $config.APP_NAME }}</slot></q-toolbar-title>
+        </div>
+        <q-space />
+        <div
+          class="flex items-center q-gutter-x-sm bg-grey-2 q-pa-sm"
+          style="border-radius: 15px"
         >
-          <slot name="title">{{ $config.APP_NAME }}</slot>
-        </q-toolbar-title>
-        <slot name="right-button"></slot>
+          <q-avatar size="50px">
+            <img
+              src="https://cdn.quasar.dev/img/boy-avatar.png"
+              alt="Foto Profil Pengguna"
+            />
+          </q-avatar>
+
+          <span class="text-subtitle1 text-weight-bold">Jhon Example</span>
+
+          <q-btn flat round dense icon="more_vert" text-color="grey-7" />
+        </div>
       </q-toolbar>
-      <slot name="header"></slot>
     </q-header>
 
     <q-page-container class="bg-grey-1">
-      <q-page>
+      <q-page class="q-px-xl q-py-lg">
         <slot></slot>
       </q-page>
     </q-page-container>
