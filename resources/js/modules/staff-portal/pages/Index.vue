@@ -1,33 +1,99 @@
 <script setup>
-const apps = [
-  { label: "PPDB", icon: "school", url: route("dummy-route") },
-  { label: "System", icon: "settings", url: "dummy-route" },
-  { label: "Akademik", icon: "menu_book", url: "dummy-route" },
-  { label: "Kesiswaan", icon: "group", url: "dummy-route" },
-  { label: "Absensi", icon: "event_available", url: "dummy-route" },
-  { label: "Keuangan", icon: "payments", url: "dummy-route" },
-];
+    const features = [
+      {
+        icon: 'school',
+        title: 'PPBD',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.'
+      },
+      {
+        icon: 'settings',
+        title: 'SYSTEM',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.'
+      },
+      {
+        icon: 'auto_stories',
+        title: 'AKADEMIK',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.'
+      },
+      {
+        icon: 'groups', 
+        title: 'KESISWAAN',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.'
+      },
+      {
+        icon: 'wallet',
+        title: 'ABSENSI',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.'
+      },
+      {
+        icon: 'task_alt',
+        title: 'KEUANGAN',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.'
+      }
+    ];
 </script>
 
 <template>
   <authenticated-layout>
     <q-page>
-      <div style="max-width: 800px; margin: auto" class="q-pt-md">
-        <div class="text-center q-py-md">
-          Halo, {{ $page.props.auth.user.name }}
-        </div>
-        <div class="row q-col-gutter-md justify-center">
-          <my-link
-            v-for="app in apps"
-            :key="app.label"
-            :href="app.url"
-            class="col col-xs-4 col-sm-3 col-md-2 app-icon-btn"
-          >
-            <q-icon :name="app.icon" size="32px" class="q-mb-sm" />
-            <div class="text-subtitle2">{{ app.label }}</div>
-          </my-link>
-        </div>
+      <div
+        class="relative-position overflow-hidden text-center bg-grey-2 rounded-borders q-mb-xl"
+        style="padding: 80px 20px"
+      >
+        <q-icon
+          name="arrow_back"
+          color="black"
+          style="
+            position: absolute;
+            opacity: 0.3;
+            font-size: 34px;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+          "
+        />
+
+        <q-icon
+          name="arrow_forward"
+          color="black"
+          style="
+            position: absolute;
+            opacity: 0.3;
+            font-size: 34px;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+          "
+        />
+
+        <q-icon
+          name="more_horiz"
+          color="black"
+          style="position: absolute; font-size: 20px; left: 40px; bottom: 20px"
+        />
+
+        <h1 class="text-h4 text-weight-bold q-ma-none">ALL INFORMATION</h1>
       </div>
+
+      <div class="row q-col-gutter-xl">
+
+      <div
+        v-for="feature in features"
+        :key="feature.title"
+        class="col-12 col-sm-6 col-md-4"
+      >
+        <q-card flat bordered class="full-height text-center q-pa-md">
+          <q-card-section>
+            <q-avatar size="80px" font-size="45px" color="primary" text-color="white" :icon="feature.icon" />
+
+            <div class="text-h6 text-weight-bold q-mt-md">{{ feature.title }}</div>
+
+            <p class="text-caption text-grey-8 q-mt-sm">{{ feature.description }}</p>
+
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
     </q-page>
   </authenticated-layout>
 </template>
